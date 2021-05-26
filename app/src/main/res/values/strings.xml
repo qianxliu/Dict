@@ -104,5 +104,9 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="interpretation">释义...</string>
+    <string name="chinaProverb">对应中谚...</string>
+    <string name="source">出处...</string>
+    <string name="button_clear">清空</string>
 
 </resources>

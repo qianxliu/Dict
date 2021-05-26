@@ -37,7 +37,7 @@ import java.util.concurrent.Executors;
  * app, consider exporting the schema to help you with migrations.
  */
 
-@Database(entities = {Proverb.class}, version = 1, exportSchema = false)
+@Database(entities = {Proverb.class}, version = 2, exportSchema = false)
 abstract class ProverbRoomDatabase extends RoomDatabase {
 
     private static final int NUMBER_OF_THREADS = 4;
@@ -57,15 +57,17 @@ abstract class ProverbRoomDatabase extends RoomDatabase {
             databaseWriteExecutor.execute(() -> {
                 // Populate the database in the background.
                 // If you want to start with more words, just add them.
-                ProverbDao dao = INSTANCE.proverbDao();
+                //ProverbDao dao = INSTANCE.proverbDao();
                 //dao.deleteAll();
 
+                /*
                 Proverb word = new Proverb("ああ言えばこう言う",
                         "相手の言うことに素直に従わず、一つ一つ理屈をつけて逆らうこと",
                         "倒着干；针锋相对；唇枪舌战",
                         "");
 
                 dao.insert(word);
+                */
             });
         }
     };
@@ -84,6 +86,7 @@ abstract class ProverbRoomDatabase extends RoomDatabase {
                             ProverbRoomDatabase.class, "app_database")
                             .createFromAsset("proverb.db")
                             .addCallback(sRoomDatabaseCallback)
+                            .fallbackToDestructiveMigration()
                             .build();
                 }
             }

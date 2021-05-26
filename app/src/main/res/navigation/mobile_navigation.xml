@@ -9,13 +9,13 @@
         android:id="@+id/nav_home"
         android:name="com.qianxin.dict.ui.home.ProverbFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_proverb" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.qianxin.dict.ui.gallery.GalleryFragment"
+        android:name="com.qianxin.dict.ui.gallery.FavoriteFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_favorite" />
 
     <fragment
         android:id="@+id/nav_slideshow"

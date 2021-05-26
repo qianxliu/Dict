@@ -5,31 +5,35 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.util.ArrayList;
-
 @Entity(tableName = "proverb_table")
 public class Proverb {
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "proverb")
-    private String mProverb;
+    private final String mProverb;
 
     @NonNull
     @ColumnInfo(name = "interpretation")
-    private String mInterpretation;
+    private final String mInterpretation;
 
     @NonNull
     @ColumnInfo(name = "chinaProverb")
-    private String mChinaProverb;
+    private final String mChinaProverb;
 
     @ColumnInfo(name = "source")
-    private String mSource;
+    private final String mSource;
 
-    public Proverb(@NonNull String proverb, String interpretation, String chinaProverb, String source) {
+    @NonNull
+    @ColumnInfo(name = "favorite")
+    private final Integer mFavorite;
+
+
+    public Proverb(@NonNull String proverb, @NonNull String interpretation, @NonNull String chinaProverb, String source, @NonNull Integer favorite) {
         this.mProverb = proverb;
         this.mInterpretation = interpretation;
         this.mChinaProverb = chinaProverb;
         this.mSource = source;
+        this.mFavorite = favorite;
     }
 
     public Proverb(@NonNull String[] proverbSet) {
@@ -37,6 +41,7 @@ public class Proverb {
         this.mInterpretation = proverbSet[1];
         this.mChinaProverb = proverbSet[2];
         this.mSource = proverbSet[3];
+        this.mFavorite = 0;
     }
 
     @NonNull
@@ -44,19 +49,9 @@ public class Proverb {
         return this.mProverb;
     }
 
-
-    public String[] getDetail() {
-        return new String[]{
-                this.mInterpretation,
-                this.mChinaProverb,
-                this.mSource
-        };
-    }
-
     public String getInterpretation() {
         return this.mInterpretation;
     }
-
 
     public String getChinaProverb() {
         return this.mChinaProverb;
@@ -66,4 +61,7 @@ public class Proverb {
         return this.mSource;
     }
 
+    public Integer getFavorite() {
+        return this.mFavorite;
+    }
 }

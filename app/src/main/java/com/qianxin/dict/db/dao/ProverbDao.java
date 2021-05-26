@@ -24,7 +24,16 @@ public interface ProverbDao {
     @Query("SELECT * FROM proverb_table ORDER BY proverb ASC")
     LiveData<List<Proverb>> getAlphabetizedWords();
 
-    //@Query("SELECT interpretation, chinaProverb, source FROM proverb_table WHERE proverb = :proverb")
-    //LiveData<String[]> getDetails(String proverb);
+    // || == +
+    @Query("SELECT * FROM proverb_table WHERE proverb LIKE '%' || :proverb  || '%' ORDER BY proverb ASC")
+    LiveData<List<Proverb>> searchAllProverbs(String proverb);
 
+    @Query("SELECT * FROM proverb_table WHERE proverb LIKE :proverb  || '%' ORDER BY proverb ASC")
+    LiveData<List<Proverb>> searchDictProverbs(String proverb);
+
+    @Query("SELECT * FROM proverb_table WHERE favorite = 1 ORDER BY proverb ASC")
+    LiveData<List<Proverb>> getFavoriteProverbs();
+
+    @Query("SELECT * FROM proverb_table WHERE favorite = 1 AND proverb LIKE '%' || :proverb  || '%' ORDER BY proverb ASC")
+    LiveData<List<Proverb>> searchFavoriteProverbs(String proverb);
 }

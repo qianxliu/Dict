@@ -1,6 +1,5 @@
 package com.qianxin.dict.ui.home;
 
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
@@ -20,7 +19,7 @@ public class ProverbListAdapter extends ListAdapter<Proverb, ProverbViewHolder> 
 
     @NotNull
     @Override
-    public ProverbViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ProverbViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         return ProverbViewHolder.create(parent);
     }
 
@@ -29,27 +28,23 @@ public class ProverbListAdapter extends ListAdapter<Proverb, ProverbViewHolder> 
         Proverb current = getItem(position);
         holder.bind(current.getProverb());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(holder.itemView.getContext(), "释义："+ current.getInterpretation() +
-                        "\n中谚：" + current.getChinaProverb() +
-                        "\n出处：" +current.getSource()
-                        , Toast.LENGTH_LONG).show();
-                /*
-                Intent intent = new Intent(holder.itemView.getContext().getApplicationContext(), ProverbItemActivity.class);
-                //intent.putExtra("name", current);
+        holder.itemView.setOnClickListener(v -> {
+            Toast.makeText(holder.itemView.getContext(), "释义：" + current.getInterpretation() +
+                            "\n中谚：" + current.getChinaProverb() +
+                            "\n出处：" + current.getSource()
+                    , Toast.LENGTH_LONG).show();
+            /*
+            Intent intent = new Intent(holder.itemView.getContext().getApplicationContext(), ProverbItemActivity.class);
+            //intent.putExtra("name", current);
 
 
-                holder.itemView.getContext().startActivity(intent);
-                */
-            }
+            holder.itemView.getContext().startActivity(intent);
+            */
         });
-
     }
 
 
-    static class ProverbDiff extends DiffUtil.ItemCallback<Proverb> {
+     public static class ProverbDiff extends DiffUtil.ItemCallback<Proverb> {
 
         @Override
         public boolean areItemsTheSame(@NonNull Proverb oldItem, @NonNull Proverb newItem) {

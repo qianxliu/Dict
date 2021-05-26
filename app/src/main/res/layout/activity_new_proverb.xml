@@ -11,16 +11,75 @@
         android:fontFamily="sans-serif-light"
         android:hint="@string/hint_proverb"
         android:inputType="textAutoComplete"
-        android:layout_margin="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/button_save"
+    <EditText
+        android:id="@+id/interpretation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/design_default_color_primary"
-        android:text="@string/button_save"
-        android:layout_margin="8dp"
-        android:textColor="@color/buttonLabel" />
+        android:minHeight="16dp"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/interpretation"
+        android:inputType="textAutoComplete"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/chinaProverb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="16dp"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/chinaProverb"
+        android:inputType="textAutoComplete"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/source"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="16dp"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/source"
+        android:inputType="textAutoComplete"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:textSize="18sp" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_margin="32dp">
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/button_clear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/design_default_color_primary"
+            android:text="@string/button_clear"
+            android:layout_margin="8dp"
+            android:textColor="@color/buttonLabel" />
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/button_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/design_default_color_primary"
+            android:text="@string/button_save"
+            android:layout_margin="8dp"
+            android:textColor="@color/buttonLabel" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </LinearLayout>
