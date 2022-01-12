@@ -27,11 +27,9 @@ public class NewProverbActivity extends AppCompatActivity {
         final Button button = findViewById(R.id.button_save);
         button.setOnClickListener(view -> {
             Intent replyIntent = new Intent();
-
             if (TextUtils.isEmpty(mEditWordView.getText())) {
                 setResult(RESULT_CANCELED, replyIntent);
             } else {
-
                 String[] list = {
                         mEditWordView.getText().toString(),
                         mInterpretationView.getText().toString(),
@@ -40,7 +38,6 @@ public class NewProverbActivity extends AppCompatActivity {
                 };
 
                 replyIntent.putExtra(EXTRA_REPLY, list);
-
                 setResult(RESULT_OK, replyIntent);
             }
             finish();
@@ -59,6 +56,5 @@ public class NewProverbActivity extends AppCompatActivity {
                     mSourceView.clearComposingText();
                 }
         );
-
     }
 }

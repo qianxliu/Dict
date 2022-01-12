@@ -1,19 +1,35 @@
 package com.qianxin.dict.ui.gallery;
 
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-public class FavoriteViewModel extends ViewModel {
+import com.qianxin.dict.db.ProverbRepository;
+import com.qianxin.dict.db.entity.Proverb;
 
-    private MutableLiveData<String> mText;
+import java.util.List;
 
-    public FavoriteViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+public class FavoriteViewModel extends AndroidViewModel {
+
+    private final LiveData<List<Proverb>> mFavoriteProverbs;
+    private final ProverbRepository mRepository;
+
+    public FavoriteViewModel(Application application) {
+        super(application);
+        mRepository = new ProverbRepository(application);
+        mFavoriteProverbs = mRepository.getFavoriteProverbs();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    LiveData<List<Proverb>> getFavoriteProverbs() {
+        return mFavoriteProverbs;
+    }
+
+    LiveData<List<Proverb>> searchFavoriteProverbs(String string) {
+        return mRepository.searchFavoriteProverbs(string);
+    }
+
+    public void insert(Proverb proverb) {
+        mRepository.insert(proverb);
     }
 }

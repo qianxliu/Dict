@@ -1,4 +1,4 @@
-package com.qianxin.dict.ui.home;
+package com.qianxin.dict.ui.item;
 
 import android.view.LayoutInflater;
 import android.view.View;

@@ -15,26 +15,25 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.qianxin.dict.R;
-import com.qianxin.dict.databinding.FragmentProverbBinding;
-import com.qianxin.dict.ui.home.ProverbListAdapter;
+import com.qianxin.dict.databinding.FragmentFavoriteBinding;
+import com.qianxin.dict.ui.item.ProverbListAdapter;
 
 public class FavoriteFragment extends Fragment {
 
-    public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
     private FavoriteViewModel favoriteViewModel;
-    private FragmentProverbBinding binding;
+    private FragmentFavoriteBinding binding;
     private ProverbListAdapter adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentProverbBinding.inflate(inflater, container, false);
+        binding = FragmentFavoriteBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        RecyclerView recyclerView = root.findViewById(R.id.recyclerview);
+        RecyclerView recyclerView = root.findViewById(R.id.recyclerview_fav);
         adapter = new ProverbListAdapter(new ProverbListAdapter.ProverbDiff());
 
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
 
         return root;
     }
@@ -45,15 +44,11 @@ public class FavoriteFragment extends Fragment {
 
         favoriteViewModel = new ViewModelProvider(this).get(FavoriteViewModel.class);
 
-        /*
         favoriteViewModel.getFavoriteProverbs().observe(
-                getViewLifecycleOwner(), proverbs -> {
-                    adapter.submitList(proverbs);
-                }
+                getViewLifecycleOwner(), proverbs -> adapter.submitList(proverbs)
         );
 
-         */
-        binding.input.addTextChangedListener(
+        binding.inputFav.addTextChangedListener(
                 new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -62,21 +57,19 @@ public class FavoriteFragment extends Fragment {
 
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        /*
+
                         favoriteViewModel.searchFavoriteProverbs(s.toString()).observe(
                                 getViewLifecycleOwner(), myProverbs -> {
                                     if (!s.toString().isEmpty()) {
                                         adapter.submitList(myProverbs);
                                     } else {
                                         favoriteViewModel.getFavoriteProverbs().observe(
-                                                getViewLifecycleOwner(), proverbs -> {
-                                                    adapter.submitList(proverbs);
-                                                }
+                                                getViewLifecycleOwner(), proverbs -> adapter.submitList(proverbs)
                                         );
                                     }
                                 });
 
-                         */
+
                     }
 
                     @Override

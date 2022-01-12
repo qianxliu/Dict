@@ -1,4 +1,4 @@
-package com.qianxin.dict.ui.home;
+package com.qianxin.dict.ui.item;
 
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
 import com.qianxin.dict.db.entity.Proverb;
+import com.qianxin.dict.ui.item.ProverbViewHolder;
 
 import org.jetbrains.annotations.NotNull;
 

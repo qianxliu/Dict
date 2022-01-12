@@ -12,8 +12,8 @@ import java.util.List;
 public class ProverbRepository {
 
 
-    private ProverbDao mProverbDao;
-    private LiveData<List<Proverb>> mAllProverbs;
+    private final ProverbDao mProverbDao;
+    private final LiveData<List<Proverb>> mAllProverbs;
     private LiveData<List<Proverb>> mSearchProverbs;
 
     // Note that in order to unit test the WordRepository, you have to remove the Application
