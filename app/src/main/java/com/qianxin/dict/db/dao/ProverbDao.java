@@ -31,6 +31,9 @@ public interface ProverbDao {
     @Query("SELECT * FROM proverb_table WHERE proverb LIKE :proverb  || '%' ORDER BY proverb ASC")
     LiveData<List<Proverb>> searchDictProverbs(String proverb);
 
+    @Query("SELECT * FROM proverb_table WHERE chinaProverb in(:chinaProverbs)")
+    LiveData<List<Proverb>> marchProverbs(List<String> chinaProverbs);
+
     @Query("SELECT * FROM proverb_table WHERE favorite = 1 ORDER BY proverb ASC")
     LiveData<List<Proverb>> getFavoriteProverbs();
 

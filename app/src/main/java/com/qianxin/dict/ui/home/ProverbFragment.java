@@ -18,6 +18,8 @@ import com.qianxin.dict.R;
 import com.qianxin.dict.databinding.FragmentProverbBinding;
 import com.qianxin.dict.ui.item.ProverbListAdapter;
 
+import java.io.IOException;
+
 public class ProverbFragment extends Fragment {
 
     private ProverbViewModel proverbViewModel;
@@ -57,8 +59,17 @@ public class ProverbFragment extends Fragment {
 
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        /*
                         proverbViewModel.searchAllProverbs(s.toString()).observe(
                                 getViewLifecycleOwner(), myProverbs -> adapter.submitList(myProverbs));
+
+                         */
+                        try {
+                            proverbViewModel.searchAiAllProverbs(s.toString()).observe(
+                                    getViewLifecycleOwner(), myProverbs -> adapter.submitList(myProverbs));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                     @Override

@@ -11,7 +11,6 @@ import java.util.List;
 
 public class ProverbRepository {
 
-
     private final ProverbDao mProverbDao;
     private final LiveData<List<Proverb>> mAllProverbs;
     private LiveData<List<Proverb>> mSearchProverbs;
@@ -50,6 +49,10 @@ public class ProverbRepository {
     // Search Favorite proverbs
     public LiveData<List<Proverb>> searchFavoriteProverbs(String string) {
         return mProverbDao.searchFavoriteProverbs(string);
+    }
+
+    public LiveData<List<Proverb>> marchProverbs(List<String> chinaProverbs) {
+        return mProverbDao.marchProverbs(chinaProverbs);
     }
 
     // You must call this on a non-UI thread or your app will throw an exception. Room ensures

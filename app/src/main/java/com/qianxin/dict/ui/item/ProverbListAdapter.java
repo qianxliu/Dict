@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
 import com.qianxin.dict.db.entity.Proverb;
-import com.qianxin.dict.ui.item.ProverbViewHolder;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -45,7 +44,7 @@ public class ProverbListAdapter extends ListAdapter<Proverb, ProverbViewHolder> 
     }
 
 
-     public static class ProverbDiff extends DiffUtil.ItemCallback<Proverb> {
+    public static class ProverbDiff extends DiffUtil.ItemCallback<Proverb> {
 
         @Override
         public boolean areItemsTheSame(@NonNull Proverb oldItem, @NonNull Proverb newItem) {

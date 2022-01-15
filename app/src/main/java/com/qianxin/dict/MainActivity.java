@@ -17,7 +17,6 @@ import com.google.android.material.navigation.NavigationView;
 import com.qianxin.dict.databinding.ActivityMainBinding;
 import com.qianxin.dict.db.ProverbRepository;
 import com.qianxin.dict.db.entity.Proverb;
-import com.qianxin.dict.ui.home.ProverbViewModel;
 import com.qianxin.dict.ui.newproverb.NewProverbActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        ProverbRepository mRepository = new ProverbRepository(getApplication());;
+        ProverbRepository mRepository = new ProverbRepository(getApplication());
 
         if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
             Proverb proverb = new Proverb(data.getStringArrayExtra(NewProverbActivity.EXTRA_REPLY));
